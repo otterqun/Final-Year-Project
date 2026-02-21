@@ -1,0 +1,380 @@
+/* frontend/styles.css - minimal */
+/* body { font-family: Arial, sans-serif; max-width:900px; margin:20px auto; padding:0 16px; }
+h1 { font-size:20px; margin-bottom:8px; }
+#controls { margin-bottom:12px; display:flex; gap:8px; align-items:center; }
+canvas { display:block; max-width:100%; border:1px solid #ddd; margin-bottom:8px; }
+#result { padding:8px; background:#f7f7f7; border-radius:6px; }
+button { padding:8px 10px; } */
+
+/* style.css */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(135deg, #0f0f0f, #1a1a2e);
+  color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Make navbar fixed at top */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #0f0f0f;
+  padding: 1rem 2rem;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #1a1a2e;
+}
+
+/* Adjust for fixed navbar */
+.hero {
+  margin-top: 200px; /* prevent overlap */
+  text-align: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #00ffd5;
+  text-shadow: 0 0 8px #00ffd5;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #ccc;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #00ffd5;
+}
+
+.hero {
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px #00ffd5;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #aaa;
+  margin-bottom: 2rem;
+}
+
+.btn {
+  background: #00ffd5;
+  color: #000;
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+  box-shadow: 0 0 10px #00ffd5;
+}
+
+.btn:hover {
+  background: #00bfa6;
+  box-shadow: 0 0 20px #00bfa6;
+}
+
+.tagline {
+  font-size: 1.2rem;
+  color: #00ffd5;
+  margin-bottom: 1rem;
+}
+
+.description {
+  font-size: 1rem;
+  color: #ccc;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+
+/*  */
+/* tryon.html */
+/*  */
+
+/* Try-On Section */
+.tryon-section {
+  margin-top: 100px; /* navbar offset */
+  text-align: center;
+  padding: 2rem;
+  background: rgba(0,255,213,0.05);
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(0,255,213,0.2);
+}
+
+.tryon-section h2 {
+  font-size: 2.5rem;
+  color: #00ffd5;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 10px #00ffd5;
+}
+
+.tryon-section .subtitle {
+  color: #ccc;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.input-btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  background: #00ffd5;
+  color: #000;
+  box-shadow: 0 0 8px #00ffd5;
+  transition: 0.3s;
+}
+
+.input-btn:hover {
+  background: #00bfa6;
+  box-shadow: 0 0 15px #00bfa6;
+}
+
+.btn-primary {
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  background: #00ffd5;
+  color: #000;
+  box-shadow: 0 0 8px #00ffd5;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background: #00bfa6;
+  box-shadow: 0 0 15px #00bfa6;
+}
+
+.btn-danger {
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  background: #ff006e;
+  color: #fff;
+  box-shadow: 0 0 8px #ff006e;
+  transition: 0.3s;
+}
+
+.btn-danger:hover {
+  background: #cc0058;
+  box-shadow: 0 0 15px #cc0058;
+}
+
+#preview {
+  display: none;              /* Hidden by default */
+  max-width: 480px;           
+  max-height: 360px;
+  border-radius: 10px;
+  border: 2px solid #ddd;
+  object-fit: contain;         /* Makes image scale nicely */
+  margin: 0 auto;              /* Center */
+}
+
+.preview-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+#video, #preview {
+  border-radius: 1rem;
+  max-width: 100%;
+  box-shadow: 0 0 15px rgba(0,255,213,0.3);
+}
+
+.result-area {
+  margin-top: 1rem;
+  color: #f0f0f0;
+  text-align: center;
+}
+
+#faceShape {
+  font-size: 1.5rem;
+  color: #00ffd5;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+#recommendationList {
+  list-style: none;
+  padding: 0;
+  margin-top: 0.5rem;
+}
+
+#recommendationList li {
+  color: #00ffd5;
+  margin: 0.3rem 0;
+  font-weight: bold;
+}
+
+
+
+
+/*  */
+/* about.html */
+/*  */
+
+.about-section {
+  margin-top: 50px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0, 255, 213, 0.2);
+}
+
+.about-section h2 {
+  font-size: 2rem;
+  color: #00ffd5;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.about-section p {
+  font-size: 1rem;
+  color: #ccc;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.about-list {
+  margin-top: 0.5rem;
+  padding-left: 1.5rem;
+}
+
+.about-list li {
+  margin-bottom: 0.5rem;
+  color: #00ffd5;
+}
+
+
+
+/* =========================
+   AR Try-On Page Styling
+   ========================= */
+.ar-try-section {
+  margin-top: 120px; /* push below navbar */
+  text-align: center;
+  padding: 2rem;
+}
+
+.ar-try-section h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: #00ffd5;
+  text-shadow: 0 0 10px #00ffd5;
+}
+
+/* AR Scene Box */
+.ar-box {
+  overflow: hidden !important; 
+  margin: 0 auto;
+  max-width: 850px;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(0, 255, 213, 0.3);
+  overflow: hidden;
+}
+
+/* Force AR scene to respect container */
+.ar-box a-scene {
+  position: relative !important;
+  width: 100% !important;
+  height: 500px !important; /* The height of your visual box */
+  border-radius: 1rem;
+  overflow: hidden !important; /* Crucial */
+}
+
+/* Prevent A-Frame canvas from overflowing */
+.ar-box canvas,
+.ar-box video {
+  margin-top: 50%;
+  margin-left: 25%;
+  width: 50% !important;
+  height: 45% !important;
+  object-fit: cover; /* Good: ensures it fills the box without stretching */
+  border-radius: 1rem;
+}
+
+/* =========================
+   Glassess
+   ========================= */
+
+ .glasses-menu {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    .glasses-menu button {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #333;
+      color: #fff;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .glasses-menu button:hover {
+      background: #555;
+    }

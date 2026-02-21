@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Try-On | Eyewear AI</title>
+  <link rel="stylesheet" href="zzzstyle.css" />
+</head>
+<body>
+  <div class="container">
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <div class="logo">EyewearAI</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="zzztryon.html" class="active">Try-On</a></li>
+        <li><a href="ar4.html">Filter</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+
+    <!-- MAIN SECTION -->
+    <section class="tryon-section">
+      <h2>Virtual Try-On</h2>
+      <p class="subtitle">Upload your photo or use your webcam to get your face shape and recommended glasses.</p>
+
+      <div class="parent">
+        
+        <div class="div1 input-zone">
+            
+            <div class="choice-buttons">
+                <button id="chooseUpload" class="btn-primary">Upload Image</button>
+                <button id="chooseCamera" class="btn-primary">Use Camera</button>
+            </div>
+
+            <div id="uploadSection" style="display: none; margin-top: 20px;">
+                <h3 style="margin-bottom:20px;">Select an Image</h3>
+                <input style="margin-bottom:20px;" type="file" id="fileInput" accept="image/*" class="input-btn">
+                <div class="preview-box">
+                    <canvas id="preview" width="480" height="360" style="display:none;"></canvas>
+                </div>
+            </div>
+
+            <div id="cameraSection" style="display: none; margin-top: 20px;">
+                <h3>Camera Mode</h3>
+                <div class="video-container">
+                    <video id="video" width="100%" autoplay playsinline></video>
+                </div>
+                <div class="cam-controls">
+                    <button id="startCam" class="btn-primary">Start</button>
+                    <button id="captureBtn" class="btn-primary" disabled>Capture</button>
+                    <button id="stopCam" class="btn-danger" disabled>Stop</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="div2 result-zone">
+            <div id="result" class="result-box">
+                <p style="color: #666; margin-top: 20px;">
+                    Result will appear here after analysis.
+                </p>
+            </div>
+        </div>
+
+      </div> </section>
+
+  </div>
+
+  <script src="zzzscript.js"></script>
+</body>
+</html>

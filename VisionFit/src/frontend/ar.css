@@ -1,0 +1,257 @@
+/* ar.css - Combined AR Fixes and Neon Theme */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  /* Dark, futuristic background */
+  background: linear-gradient(135deg, #0f0f0f, #1a1a2e); 
+  color: #f0f0f0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* Remove center alignment on body as fixed elements handle positioning */
+}
+
+/* --------------------------------------
+ * Navigation Bar (From your original CSS)
+ * -------------------------------------- */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #0f0f0f;
+  padding: 1rem 2rem;
+  z-index: 1000; /* Highest priority */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #1a1a2e;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #00ffd5;
+  text-shadow: 0 0 8px #00ffd5;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #ccc;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #00ffd5;
+}
+
+/* --------------------------------------
+ * Main AR Page Layout
+ * -------------------------------------- */
+.ar-page-wrapper {
+  width: 100%;
+  /* Push content down below the fixed navbar */
+  padding-top: 100px; 
+  padding-bottom: 65px; 
+  display: flex;
+  justify-content: center; /* Center the AR container */
+}
+
+/* The Main AR Video Box (Central Content) */
+.ar-scene-container {
+  width: 90%; 
+  max-width: 800px; 
+  margin: 0 auto; 
+  background: rgba(255, 255, 255, 0.05); 
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(0, 255, 213, 0.3);
+  overflow: hidden; 
+  position: relative; /* Crucial for internal sizing */
+}
+
+/* CRITICAL FIX: Ensure A-Frame scene respects the container's dimensions */
+a-scene {
+  position: relative !important; 
+  width: 100% !important;
+  height: 600px !important; /* Fixed height for the AR video feed */
+  border-radius: 0.8rem !important; 
+  overflow: hidden !important; 
+  background-color: transparent ; 
+}
+
+/* CRITICAL FIX: Force MindAR video/canvas to fill the entire scene */
+a-scene video,
+a-scene canvas {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important; 
+  border-radius: 0 !important; 
+  margin: 0 !important; 
+  position: absolute !important; 
+  top: 0 !important;
+  left: 0 !important;
+}
+
+/* --------------------------------------
+ * Fixed Controls (Top Right Overlay)
+ * -------------------------------------- */
+#example-control-overlay {
+  position: fixed; /* Relative to viewport */
+  top: 90px; /* Below the navbar */
+  right: 105px; 
+  background: none;
+  z-index: 100;
+}
+#example-control-overlay > div {
+    display: flex;
+    gap: 8px;
+}
+#example-control-overlay button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  background: #00ffd5;
+  color: #000;
+  box-shadow: 0 0 10px rgba(0, 255, 213, 0.7);
+  transition: all 0.2s ease;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 12px;
+}
+#example-control-overlay button:hover {
+  background: #00bfa6;
+  box-shadow: 0 0 15px #00bfa6;
+}
+
+/* --------------------------------------
+ * Fixed Glasses Options Panel (Left Side)
+ * -------------------------------------- */
+.options-panel {
+  position: fixed; 
+  left: 120px;
+  top: 90px; /* Below the navbar */
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  padding: 10px;
+  background-color: rgba(15, 15, 15, 0.85);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 255, 213, 0.3);
+  max-height: calc(100vh - 140px); /* Fill vertical space, accounting for top/bottom margins */
+  overflow-y: auto; 
+}
+.options-panel img {
+  border: solid 2px transparent;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  cursor: pointer;
+  margin: 5px 0;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  filter: brightness(80%);
+}
+.options-panel img:hover {
+    filter: brightness(100%);
+    box-shadow: 0 0 5px rgba(0, 255, 213, 0.5);
+}
+.options-panel img.selected {
+    border-color: #00ffd5;
+    box-shadow: 0 0 12px #00ffd5;
+    filter: brightness(100%);
+}
+.options-panel img.disabled {
+  filter: grayscale(100%) opacity(30%);
+  cursor: not-allowed;
+  border-color: #333;
+  box-shadow: none;
+  opacity: 1;
+  pointer-events: none;
+}
+
+/* --------------------------------------
+ * Fixed Face Shape Buttons (Bottom Center)
+ * -------------------------------------- */
+/* --------------------------------------
+ * Fixed Face Shape Buttons (Right Side - Vertical)
+ * -------------------------------------- */
+.shape-buttons {
+  position: fixed;
+  top: 140px; /* Jarak dari atas (di bawah button Start/Stop) */
+  right: 97px; /* Rapat ke kanan (sama alignment dengan button atas) */
+  
+  /* Reset kedudukan lama (bawah tengah) */
+  bottom: auto;
+  left: auto;
+  transform: none;
+  
+  z-index: 100;
+  
+  /* Layout Menegak */
+  display: flex;
+  flex-direction: column; 
+  gap: 10px;
+  
+  /* Styling Panel (Tiru gaya .options-panel sebelah kiri) */
+  background-color: rgba(15, 15, 15, 0.85);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 255, 213, 0.3);
+  border: 1px solid rgba(0, 255, 213, 0.2); /* Border halus */
+}
+
+/* Tajuk kecil untuk panel (Optional, guna pseudo-element) */
+.shape-buttons::before {
+  content: "Face Shape";
+  color: #00ffd5;
+  font-size: 0.8rem;
+  text-align: center;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.shape-buttons button {
+  border: 1px solid #333;
+  padding: 10px 15px;
+  width: 100px; /* Tetapkan lebar supaya nampak seragam */
+  border-radius: 8px; /* Kurangkan sikit bulat dia biar nampak macam kotak menu */
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  background-color: #2a2a44;
+  color: #ccc;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.shape-buttons button:hover {
+  background-color: #3a3a5e;
+  border-color: #00ffd5;
+}
+
+.shape-buttons button.active {
+  background-color: #00ffd5;
+  color: #000;
+  border-color: #00ffd5;
+  box-shadow: 0 0 10px rgba(0, 255, 213, 0.6);
+  transform: scale(1.05); /* Effect pop-out sikit bila aktif */
+}
+

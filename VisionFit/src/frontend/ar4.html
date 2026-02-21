@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EyewearAI - AR Try-On</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-face-aframe.prod.js"></script>
+
+    <link rel="stylesheet" href="ar.css" />
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <div class="logo">EyewearAI</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="zzztryon.html">Try-On</a></li>
+        <li><a href="ar4.html">Filter</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+    
+    <div class="ar-page-wrapper">
+
+      <div class="options-panel" style="margin-right: -100px;">
+        <img id="aviators" src="spectacles/aviator.jpg" title="Aviators" style="width: 100px;"/> Aviators 
+        <img id="blue_rectangle" src="spectacles/rectangle.jpg" title="Blue Rectangle" style="width: 100px;"/> Rectangle
+        <img id="browline" src="spectacles/browline.jpg" title="Browline" style="width: 100px;"/> Browline
+        <img id="cat_eye" src="spectacles/cateye.png" title="Cat Eye" style="width: 100px;"/> Cat Eye
+        <img id="geometric" src="spectacles/geometric.jpg" title="Geometric" style="width: 100px;"/> Geometric
+        <img id="oval" src="spectacles/oval.jpg" title="Oval" style="width: 100px;"/> Oval
+        <img id="round" src="spectacles/round.jpg" title="Round" style="width: 100px;"/> Round
+        <img id="square" src="spectacles/square.png" title="Square" style="width: 100px;"/> Square
+        <img id="wayfare" src="spectacles/wayfarer.jpg" title="Wayfare" style="width: 100px;"/> Wayfare
+      </div>
+
+      <div class="ar-scene-container">
+        
+        <div id="example-control-overlay" class="overlay">
+          <div>
+            <button id="example-start-button">Start</button>
+            <button id="example-stop-button">Stop</button>
+            <!-- <button id="example-switch-camera-button">Switch Camera</button> -->
+          </div>
+        </div>
+
+        <a-scene mindar-face="autoStart: false" embedded color-space="sRGB"
+          renderer="colorManagement: true, physicallyCorrectLights"
+          vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+
+          <a-assets>
+            <!-- <a-asset-item id="aviatorsModel" src="glasses2/test9.glb"></a-asset-item> -->
+            <a-asset-item id="aviatorsModel" src="glasses2/test11.glb"></a-asset-item>
+            <a-asset-item id="blue_rectangleModel" src="glasses2/test3.glb"></a-asset-item>
+            <a-asset-item id="browlineModel" src="glasses/browline_glasses.glb"></a-asset-item>
+            <a-asset-item id="cat_eyeModel" src="glasses2/test2.glb"></a-asset-item>
+            <a-asset-item id="geometricModel" src="glasses2/test4.glb"></a-asset-item>
+            <a-asset-item id="ovalModel" src="glasses2/test5.glb"></a-asset-item>
+            <a-asset-item id="roundModel" src="glasses2/test6.glb"></a-asset-item>
+            <a-asset-item id="squareModel" src="glasses2/test7.glb"></a-asset-item>
+            <a-asset-item id="wayfareModel" src="glasses2/test8.glb"></a-asset-item>
+          </a-assets>
+
+          <a-camera active="false" position="0 0 0"></a-camera>
+
+          <!-- <a-entity mindar-face-target="anchorIndex: 168">
+            <a-gltf-model position="0 -0.03 0" scale="0.0038 0.0036 0.0036" rotation="0 0 0"
+              src="#aviatorsModel" class="aviators-entity" visible="false"></a-gltf-model>
+          </a-entity> -->
+
+          <a-entity mindar-face-target="anchorIndex: 168">
+            <a-gltf-model position="0 -0.289 -0.14" scale="0.067 0.0647 0.0647" rotation="0 -2 0"
+              src="#aviatorsModel" class="aviators-entity" visible="false"></a-gltf-model>
+          </a-entity>
+
+          <a-entity mindar-face-target="anchorIndex: 168">
+            <a-gltf-model position="0 -0.17 -0.12" scale="0.91 0.8 0.8" rotation="0 0 0"
+              src="#blue_rectangleModel" class="blue_rectangle-entity" visible="false"></a-gltf-model>
+          </a-entity>
+
+          <a-entity mindar-face-target="anchorIndex: 168">
+            <a-gltf-model position="-0.51 -0.15 -0.95" scale="0.068 0.068 0.068" rotation="0 0 0"
+              src="#browlineModel" class="browline-entity" visible="false"></a-gltf-model>
+          </a-entity>
+
+          <a-entity mindar-face-target="anchorIndex: 168">
+            <a-gltf-model position="0 -0.25 0.13" scale="0.075 0.075 0.075" rotation="0 0 0"
+              src="#cat_eyeModel" class="cat_eye-entity" visible="false"></a-gltf-model>
+          </a-entity>
+
+          <a-entity mindar-face-target="anchorIndex: 168">
+            <a-gltf-model position="0 -0.01 0.05" scale="0.34 0.31 0.31" rotation="0 0 0"
+              src="#geometricModel" class="geometric-entity" visible="false"></a-gltf-model>
+          </a-entity>
+
+          <a-entity mindar-face-target="anchorIndex: 168">
+            <a-gltf-model position="-0.273 -0.05 -0.2" scale="0.109 0.1 0.1" rotation="0 0 0"
+              src="#ovalModel" class="oval-entity" visible="false"></a-gltf-model>
+          </a-entity>
+
+          <a-entity mindar-face-target="anchorIndex: 168">
+            <a-gltf-model position="-0.0005 -0.04 -0.37" scale="0.48 0.44 0.44" rotation="0 -0.5 0"
+              src="#roundModel" class="round-entity" visible="false"></a-gltf-model>
+          </a-entity>
+
+          <a-entity mindar-face-target="anchorIndex: 168">
+            <a-gltf-model position="0 -0.18 -0.015" scale="0.0287 0.0285 0.0285" rotation="-5 0 0"
+              src="#squareModel" class="square-entity" visible="false"></a-gltf-model>
+          </a-entity>
+
+          <a-entity mindar-face-target="anchorIndex: 168">
+            <a-gltf-model position="0 -0.1 0.08" scale="0.00343 0.00343 0.00343" rotation="0 0 0"
+              src="#wayfareModel" class="wayfare-entity" visible="false"></a-gltf-model>
+          </a-entity>
+        </a-scene>
+      </div> <div class="shape-buttons" id="shapeButtons">
+        <button data-shape="heart">Heart</button>
+        <button data-shape="oblong">Oblong</button>
+        <button data-shape="oval">Oval</button>
+        <button data-shape="round">Round</button>
+        <button data-shape="square">Square</button>
+      </div>
+
+    </div> <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const sceneEl = document.querySelector('a-scene');
+        let arSystem;
+        sceneEl.addEventListener('loaded', function () {
+          // Initialize mindar-face-system
+          arSystem = sceneEl.systems["mindar-face-system"];
+        });
+
+        // AR Control Buttons
+        document.querySelector("#example-start-button").addEventListener('click', () => {
+             // Check if ARSystem is available before starting
+             if (arSystem) arSystem.start();
+        });
+        document.querySelector("#example-stop-button").addEventListener('click', () => {
+             if (arSystem) arSystem.stop();
+        });
+        // document.querySelector("#example-switch-camera-button").addEventListener('click', () => {
+        //      if (arSystem) arSystem.switchCamera();
+        // });
+
+        const items = [
+          "aviators", "blue_rectangle", "browline", "cat_eye", "geometric",
+          "oval", "round", "square", "wayfare"
+        ];
+
+        const RECOMMENDATIONS = {
+          heart: ["cat_eye", "blue_rectangle", "wayfare", "square", "browline"],
+          oblong: ["round", "cat_eye", "wayfare", "aviators", "geometric"],
+          oval: ["round", "cat_eye", "blue_rectangle", "wayfare", "square", "aviators", "geometric", "browline", "oval"],
+          round: ["blue_rectangle", "wayfare", "square", "geometric", "browline"],
+          square: ["round", "cat_eye", "wayfare", "aviators", "geometric", "oval"]
+        };
+
+        function updateGlassesOptions(shape) {
+          localStorage.setItem("faceShape", shape);
+          document.querySelectorAll(".shape-buttons button").forEach(btn => btn.classList.remove("active"));
+          document.querySelector(`[data-shape="${shape}"]`).classList.add("active");
+
+          const allowed = RECOMMENDATIONS[shape.toLowerCase()] || [];
+          items.forEach(id => {
+            const button = document.querySelector("#" + id);
+            if (!button) return;
+            
+            if (allowed.includes(id)) {
+              button.classList.remove("disabled");
+              button.style.opacity = "1";
+              button.style.pointerEvents = "auto";
+            } else {
+              // Note: CSS classes handle the visual disabling now
+              button.classList.add("disabled");
+              button.style.opacity = "0.4";
+              button.style.pointerEvents = "none";
+            }
+          });
+        }
+
+        // Face Shape button listeners
+        document.querySelectorAll(".shape-buttons button").forEach(btn => {
+          btn.addEventListener("click", () => {
+            const shape = btn.dataset.shape;
+            updateGlassesOptions(shape);
+          });
+        });
+
+        // Initialize with saved or default shape
+        const savedShape = localStorage.getItem("faceShape") || "oval";
+        updateGlassesOptions(savedShape);
+
+        // Glasses selection listener
+        items.forEach(id => {
+          const button = document.querySelector("#" + id);
+          if (!button) return;
+          const entities = document.querySelectorAll("." + id + "-entity");
+          button.addEventListener('click', () => {
+            if (button.classList.contains("disabled")) return;
+            
+            // 1. Deselect all buttons
+            document.querySelectorAll(".options-panel img").forEach(img => img.classList.remove("selected"));
+            
+            // 2. Hide all glasses entities
+            items.forEach(otherId => {
+              document.querySelectorAll("." + otherId + "-entity").forEach(ent => ent.setAttribute("visible", "false"));
+            });
+            
+            // 3. Select current button and show entities
+            button.classList.add("selected");
+            entities.forEach(ent => ent.setAttribute("visible", "true"));
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

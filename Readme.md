@@ -1,6 +1,6 @@
-# Live Demo 
+# 👨‍💻 Live Demo 
 
-Go to my huggingface space - https://huggingface.co/spaces/otterqun/fypdemo 
+* Go to my HuggingFace space to try - https://huggingface.co/spaces/otterqun/fypdemo 
 
 # 👓 Face Shape Eyewear AR
 
